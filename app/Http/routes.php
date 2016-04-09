@@ -11,6 +11,48 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+/** @var Router $router */
+
+use Illuminate\Routing\Router;
+
+$router -> get('/', 'IndexController@Index');
+
+$router -> group(['middleware' => ['web']], function (Router $router) {
+
+    $router->get('generalLogin', 'LoginController@generalLogin');
+    $router->get('consoleLogin', 'LoginController@consoleLogin');
+
+    $router->post('generalLogin', 'LoginController@CheckGeneralLogin');
+    $router->post('consoleLogin', 'LoginController@CheckConsoleLogin');
+
+    $router -> group(['prefix' => 'console', 'middleware' => 'authConsole'], function (Router $router){
+
+        $router -> get('/', 'AdminController@Console');
+
+        $router -> get('/viewNewProcess', 'AdminController@viewNewProcess');
+        $router -> get('/viewAdminProcess', 'AdminController@viewAdminProcess');
+        $router -> get('/viewAllProcess', 'AdminController@viewAllProcess');
+
+        $router -> get('/viewCertainProcess/{id}', ['uses' => 'AdminController@viewCertainProcess', 'as' => 'id']);
+
+        $router -> post('/commentAssign', 'AdminController@commentAssign');
+
+
+
+    });
+
+    $router -> group(['prefix' => 'general', 'middleware' => 'authGeneral'], function (Router $router){
+
+        $router -> get('/', 'AdminController@General');
+
+        $router -> get('/addComment', 'AdminController@AddComment');
+        $router -> post('/addComment', 'AdminController@AddCommentStore');
+
+        $router -> get('/viewProcess', 'AdminController@viewProcess');
+        $router -> post('/viewProcess', 'AdminController@viewProcessModify');
+
+        $router -> get('/viewCertainProcess/{id}', ['uses' => 'AdminController@viewCertainProcess', 'as' => 'id']);
+
+    });
+
 });
