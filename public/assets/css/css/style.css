@@ -1,0 +1,39 @@
+.navbar {
+    position: relative;
+    z-index: -1;
+    top: 0%;
+
+    padding-top: 2%;
+    padding-left: 10%;
+    padding-right: 10%;
+
+    background-color: dimgrey;
+
+}
+
+.navbar .title-redesign p, h1{
+    line-height: 50%;
+    color: white;
+}
+
+.navbar .user-redesign p{
+    text-align: right;
+    padding-top: 2%;
+    line-height: 50%;
+    color: white;
+}
+
+
+
+.cos-container {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 10%;
+    margin-right: 10%;
+
+}
+
+.index-align{
+    padding-top: 10%;
+    text-align: center;
+}
