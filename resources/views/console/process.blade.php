@@ -3,15 +3,11 @@
 @section('content')
     <span class="btn-group">
         <a href="viewNewProcess"><button type="primary" @if($navi_status != 1) outline @endif>新建言 ({{$comment_new_count}})</button></a>
-        <a href="viewAdminProcess"><button type="primary" @if($navi_status != 2) outline @endif>相關單位已回覆建言 ({{$comment_admin_count}})</button></a>
+        @if(0)<a href="viewAdminProcess"><button type="primary" @if($navi_status != 2) outline @endif>相關單位已回覆建言 ({{$comment_admin_count}})</button></a>@endif
         <a href="viewAllProcess"><button type="primary" @if($navi_status != 3) outline @endif>全部建言</button></a>
+        <a href="/generalLogin"><button type="red" >登出</button></a>
     </span>
 
-    <row>
-
-        <a href="/generalLogin"><button type="primary" outline >登出</button></a>
-
-    </row>
 
     <row cols="1">
 
@@ -22,15 +18,16 @@
                     <tr>
                         <th class="width-1">處理編號</th>
                         <th class="width-4">反應主題</th>
-                        <th class="width-3">反應日期</th>
+                        <th class="width-2">反應人</th>
+                        <th class="width-2">反應日期</th>
                         <th class="width-3">處理狀態</th>
-                        <th class="width-1">撤銷處理</th>
                     </tr>
                     <tbody>
                     @foreach($comment_detail as $comments_detail)
                         <tr>
                             <td>#{{$comments_detail -> id}}</td>
                             <td><a href="viewCertainProcess/{{$comments_detail -> id}}">{{$comments_detail -> topic}}</a></td>
+                            <td>{{$comments_detail -> sid}}</td>
                             <td>{{$comments_detail -> resp_time}}</td>
                             <td>
                                 @if($comments_detail -> cancel == 1)
@@ -45,13 +42,6 @@
                                     <div class="alert alert-success"><i class="fa fa-check"></i> 已回覆</div>
                                 @elseif($comments_detail -> reply_OK == 4)
                                     <div class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> 因相關原因，不予回覆</div>
-                                @endif
-                            </td>
-                            <td>
-                                @if($comments_detail -> cancel == 1)
-                                    <div class="alert alert-error">已撤銷</div>
-                                @else
-                                    <button type="black" outline>撤銷處理</button>
                                 @endif
                             </td>
                         </tr>

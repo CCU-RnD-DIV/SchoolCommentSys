@@ -36,6 +36,8 @@ $router -> group(['middleware' => ['web']], function (Router $router) {
         $router -> get('/viewCertainProcess/{id}', ['uses' => 'AdminController@viewCertainProcess', 'as' => 'id']);
 
         $router -> post('/commentAssign', 'AdminController@commentAssign');
+        $router -> post('/modifyStatus', 'AdminController@modifyStatus');
+        $router -> post('/commentReply', 'AdminController@commentReply');
 
 
 
@@ -47,6 +49,7 @@ $router -> group(['middleware' => ['web']], function (Router $router) {
 
         $router -> get('/addComment', 'AdminController@AddComment');
         $router -> post('/addComment', 'AdminController@AddCommentStore');
+        $router -> post('/cancelComment', 'AdminController@AddCommentCancel');
 
         $router -> get('/viewProcess', 'AdminController@viewProcess');
         $router -> post('/viewProcess', 'AdminController@viewProcessModify');

@@ -24,11 +24,11 @@ class CommentCheck extends Request
     public function rules()
     {
         return [
-            'topic' => 'required|max:20',
+            /*'topic' => 'required|max:20',
             'cellphone' => 'required|regex:/^09\d{2}?\d{3}?\d{3}$/',
             'email' => 'required|email',
             'resp-text' => 'required',
-            'resp-expect' => 'required'
+            'resp-expect' => 'required'*/
         ];
     }
 

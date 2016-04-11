@@ -45,7 +45,10 @@
                                 @if($comments_detail -> cancel == 1)
                                     <div class="alert alert-error">已撤銷</div>
                                 @else
-                                    <button type="black" outline>撤銷處理</button>
+                                    {!! Form::open(['url' => 'general/cancelComment', 'class' => 'forms', 'method' => 'post']) !!}
+                                    <input type="hidden" name="comment_id" value="{{$comments_detail -> id}}"/>
+                                    {!! Form::submit('撤銷處理', ['class' => 'btn', 'type' => 'primary']) !!}
+                                    {!! Form::close() !!}
                                 @endif
                             </td>
                         </tr>

@@ -6,7 +6,7 @@
 
         <column cols="12">
             <div>
-                {!! Form::open(['url' => 'general/addComment', 'class' => 'forms', 'method' => 'post']) !!}
+                {!! Form::open(['url' => 'general/addComment','files' => true, 'class' => 'forms', 'method' => 'post']) !!}
                     <fieldset>
                         <legend>注意事項</legend>
                         <section>
@@ -90,9 +90,9 @@
                         <row>
                             <column cols="12">
                                 <label>附加檔案</label>
-                                <form action="/upload-target" class="dropzone">
-                                    <input type="file" name="file" />
-                                </form>
+
+                                <input type="file" id= "resp-attachment" name="resp-attachment" />
+
                                 <div class="desc">圖片、資料請自行壓縮一併上傳， 檔案容量需小於7MB </div>
                             </column>
                         </row>
@@ -100,7 +100,7 @@
                             {!! Form::submit('確認送出', ['class' => 'btn', 'type' => 'primary']) !!}
                         </section>
                     </fieldset>
-                </form>
+                {!! Form::close() !!}}
             </div>
         </column>
 

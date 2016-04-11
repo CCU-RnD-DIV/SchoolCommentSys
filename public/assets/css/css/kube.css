@@ -1321,6 +1321,39 @@ button[upper][big] {
 button[upper][big][outline] {
   padding: 0 47px;
 }
+.btn[type="red"],
+button[type="red"] {
+  color: rgba(255, 255, 255, 0.9);
+  background: #cc0000;
+}
+.btn[type="red"]:hover,
+button[type="red"]:hover {
+  color: rgba(255, 255, 255, 0.7);
+  background-color: #8b0000;
+}
+.btn[type="red"][disabled]:hover,
+button[type="red"][disabled]:hover {
+  color: rgba(255, 255, 255, 0.9);
+  background: #cc0000;
+}
+.btn[type="red"][outline],
+button[type="red"][outline] {
+  background: none;
+  color: #cc0000;
+  border-color: #cc0000;
+}
+.btn[type="red"][outline]:hover,
+button[type="red"][outline]:hover {
+  background: #cc0000;
+  border-color: #cc0000;
+  color: rgba(255, 255, 255, 0.9);
+}
+.btn[type="red"][outline][disabled]:hover,
+button[type="red"][outline][disabled]:hover {
+  background: none;
+  border-color: #cc0000;
+  color: #cc0000;
+}
 .btn[type="black"],
 button[type="black"] {
   color: rgba(255, 255, 255, 0.9);

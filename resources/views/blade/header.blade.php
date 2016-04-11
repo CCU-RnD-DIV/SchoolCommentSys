@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="stylesheet" href="/assets/css/css/kube.min.css" />
+    <link rel="stylesheet" href="/assets/css/css/kube.css" />
     <link rel="stylesheet" href="/assets/css/css/style.css" />
     <link rel="stylesheet" href="/assets/css/icon/css/font-awesome.min.css" />
     <script src="/assets/js/vue.js"></script>
