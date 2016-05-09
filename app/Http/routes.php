@@ -16,10 +16,14 @@
 use Illuminate\Routing\Router;
 
 $router -> get('/', 'IndexController@Index');
+$router -> get('/getPermission', 'LoginController@Index');
 
-$router -> group(['middleware' => ['web']], function (Router $router) {
+//$router -> group(['middleware' => ['web']], function (Router $router) {
 
     $router->get('generalLogin', 'LoginController@generalLogin');
+
+    $router->get('getPermission', ['as' => 'getPermission', 'uses' => 'LoginController@getPermission']);
+
     $router->get('consoleLogin', 'LoginController@consoleLogin');
 
     $router->post('generalLogin', 'LoginController@CheckGeneralLogin');
@@ -30,6 +34,7 @@ $router -> group(['middleware' => ['web']], function (Router $router) {
         $router -> get('/', 'AdminController@Console');
 
         $router -> get('/viewNewProcess', 'AdminController@viewNewProcess');
+        $router -> get('/viewFinishedProcess', 'AdminController@viewFinishedProcess');
         $router -> get('/viewAdminProcess', 'AdminController@viewAdminProcess');
         $router -> get('/viewAllProcess', 'AdminController@viewAllProcess');
 
@@ -51,6 +56,8 @@ $router -> group(['middleware' => ['web']], function (Router $router) {
         $router -> post('/addComment', 'AdminController@AddCommentStore');
         $router -> post('/cancelComment', 'AdminController@AddCommentCancel');
 
+        $router -> get('/dataUsageANC', 'AdminController@dataUsageANC');
+
         $router -> get('/viewProcess', 'AdminController@viewProcess');
         $router -> post('/viewProcess', 'AdminController@viewProcessModify');
 
@@ -58,4 +65,4 @@ $router -> group(['middleware' => ['web']], function (Router $router) {
 
     });
 
-});
+//});

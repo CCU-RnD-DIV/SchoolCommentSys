@@ -889,13 +889,14 @@ fieldset *:last-child {
 }
 legend {
   font-weight: 500;
-  font-size: 86%;
+  font-size: 110%;
   text-transform: uppercase;
   padding: 0 1em;
   margin-left: -1em;
   top: 2px;
   position: relative;
   line-height: 0;
+  color: teal;
 }
 .forms section {
   display: block;

@@ -2,10 +2,11 @@
 
 @section('content')
     <span class="btn-group">
-        <a href="viewNewProcess"><button type="primary" @if($navi_status != 1) outline @endif>新建言 ({{$comment_new_count}})</button></a>
+        <a href="viewNewProcess"><button type="primary" @if($navi_status != 1) outline @endif>待處理 ({{$comment_new_count}})</button></a>
         @if(0)<a href="viewAdminProcess"><button type="primary" @if($navi_status != 2) outline @endif>相關單位已回覆建言 ({{$comment_admin_count}})</button></a>@endif
+        <a href="viewFinishedProcess"><button type="primary" @if($navi_status != 4) outline @endif>已回覆 ({{$comment_finished_count}})</button></a>
         <a href="viewAllProcess"><button type="primary" @if($navi_status != 3) outline @endif>全部建言</button></a>
-        <a href="/generalLogin"><button type="red" >登出</button></a>
+        <a href="/consoleLogin"><button type="red" >登出</button></a>
     </span>
 
 
@@ -25,7 +26,7 @@
                     <tbody>
                     @foreach($comment_detail as $comments_detail)
                         <tr>
-                            <td>#{{$comments_detail -> id}}</td>
+                            <td>{{$comments_detail -> id}}</td>
                             <td><a href="viewCertainProcess/{{$comments_detail -> id}}">{{$comments_detail -> topic}}</a></td>
                             <td>{{$comments_detail -> sid}}</td>
                             <td>{{$comments_detail -> resp_time}}</td>
@@ -36,8 +37,6 @@
                                     <div class="alert alert-primary"><i class="fa fa-paper-plane"></i> 建言已建立，未審核</div>
                                 @elseif($comments_detail -> reply_OK == 1)
                                     <div class="alert alert-warning"><i class="fa fa-share-square"></i> 已派送至相關單位處理</div>
-                                @elseif($comments_detail -> reply_OK == 2)
-                                    <div class="alert alert-warning"><i class="fa fa-refresh"></i> 相關單位已回覆，尚未統合</div>
                                 @elseif($comments_detail -> reply_OK == 3)
                                     <div class="alert alert-success"><i class="fa fa-check"></i> 已回覆</div>
                                 @elseif($comments_detail -> reply_OK == 4)

@@ -25,7 +25,8 @@ class ReplyCheck extends Request
     {
         return [
             'comment_id' => 'required',
-            'reply-text' => 'required'
+            'status' => 'required',
+            //'reply-text' => 'required_if:status,1'
         ];
     }
 

@@ -1,7 +1,6 @@
 @extends('blade.header')
 
 @section('content')
-
     <row cols="1">
         <column cols="12">
             <div>

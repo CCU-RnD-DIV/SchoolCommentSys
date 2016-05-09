@@ -15,7 +15,18 @@
         <column cols="12">
             <div>
                 <fieldset>
-                    <legend><i class="fa fa-info-circle"></i> 建言資訊</legend>
+                    @if($comment_detail[0] -> cancel == 1)
+                        <div class="alert alert-error"><i class="fa fa-times"></i> 使用者已撤銷</div>
+                    @elseif($comment_detail[0] -> reply_OK == 0)
+                        <div class="alert alert-primary"><i class="fa fa-paper-plane"></i> 建言已建立，未審核</div>
+                    @elseif($comment_detail[0] -> reply_OK == 1)
+                        <div class="alert alert-warning"><i class="fa fa-share-square"></i> 已派送至相關單位處理</div>
+                    @elseif($comment_detail[0] -> reply_OK == 3)
+                        <div class="alert alert-success"><i class="fa fa-check"></i> 已回覆</div>
+                    @elseif($comment_detail[0] -> reply_OK == 4)
+                        <div class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> 本次建言因相關原因不予回覆，詳情請見回覆欄。</div>
+                    @endif
+                    <legend><i class="fa fa-info-circle"></i> 建言者資訊</legend>
 
                     <row>
                         <column cols="3">
@@ -36,7 +47,7 @@
                         <column cols="3">
                             <label>系級</label>
                             <hr>
-                            <h5>{{ $comment_user_detail[0]->dept  }}</h5>
+                            <h5>{{ $dept_alias[0]->name }} {{ $aca_user_detail[0]->stu_grade }}{{ $aca_user_detail[0]->stu_class }} </h5>
                         </column>
                     </row>
                     <row>
@@ -54,8 +65,8 @@
                         </column>
                     </row>
                 </fieldset>
-                    <hr>
-                <fieldset>
+
+                <fieldset style="margin-top: 5%;">
                     <legend><i class="fa fa-align-left"></i> 建言內容</legend>
                     <row>
                         <column cols="12">
@@ -82,49 +93,61 @@
                         <column cols="12">
                             <label>附加檔案</label>
                             <hr>
-                            <h5><a href="/upload/attachments/{{$comment_detail[0]->resp_attachment }}" target="_blank"> {{ $comment_detail[0]->resp_attachment }}</a></h5>
+                            @foreach($comment_attachments as $comment_attachment)
+                                @if($comment_attachment -> attachment_type == 0)
+                                    <h5><a href="/upload/attachments/{{$comment_attachment->attachment }}" target="_blank"> {{ $comment_attachment->attachment }}</a></h5>
+                                @endif
+                            @endforeach
                         </column>
                     </row>
                 </fieldset>
 
-                @if ($user_auth == 0)
-                {!! Form::open(['url' => 'console/modifyStatus', 'class' => 'forms', 'method' => 'post']) !!}
-                <fieldset>
-                    <input type="hidden" id="comment_id" name="comment_id" value="{{$comment_detail[0] -> id}}" />
-                    <legend>狀態更新</legend>
-                    <section>
-                        <label>狀態更新</label>
-                        <hr>
-                        <section>
-                            <label class="checkbox"><input type="radio" name="status" value="0"> 秘書室已收件</label>
-                            <label class="checkbox"><input type="radio" name="status" value="1"> 已分派至相關單位處理</label>
-                            <label class="checkbox"><input type="radio" name="status" value="2"> 相關單位已回覆，本處統合中</label>
-                            <label class="checkbox"><input type="radio" name="status" value="4"> 因相關原因，已撤銷本次建言</label>
-                        </section>
-                    </section>
-                    <section>
-                        {!! Form::submit('確認變更', ['class' => 'btn', 'type' => 'primary']) !!}
-                    </section>
-                </fieldset>
-                {!! Form::close() !!}
-                @endif
-
-                @if (($user_auth == 2 || $user_auth == 0) && $comment_detail[0]-> reply_OK != 3)
+                @if ($user_auth == 0 && $comment_detail[0]-> reply_OK != 3 && $comment_detail[0]-> reply_OK != 4)
                     {!! Form::open(['url' => 'console/commentReply','files' => true, 'class' => 'forms', 'method' => 'post']) !!}
-                    <fieldset>
-                        <input type="hidden" id="comment_id" name="comment_id" value="{{$comment_detail[0] -> id}}" />
+                    <fieldset style="margin-top: 5%;">
                         <legend>回覆欄</legend>
+                        <section>
+                            <label>狀態更新</label>
+                            <hr>
+                            <section>
+                                <label class="checkbox"><input type="radio" name="status" value="3" checked> 已準備回覆</label>
+                                <label class="checkbox"><input type="radio" name="status" value="1"> 已分派至相關單位處理</label>
+                                <label class="checkbox"><input type="radio" name="status" value="4"> 因相關原因，已撤銷本次建言（請於回覆欄填寫撤銷原因）</label>
+                            </section>
+                        </section>
+                        <input type="hidden" id="comment_id" name="comment_id" value="{{$comment_detail[0] -> id}}" />
                         <row>
                             <column cols="12">
                                 <label>相關單位回覆 <span class="req">*</span> </label>
+                                <hr>
                                 {!! Form::textarea('reply-text', null, ['placeholder' => '相關單位回覆', 'row' => 12]) !!}
                             </column>
                         </row>
                         <row>
                             <column cols="12">
                                 <label>附加檔案</label>
-                                <input type="file" id="reply-attachment" name="reply-attachment" />
-                                <div class="desc">圖片、資料請自行壓縮一併上傳， 檔案容量需小於7MB </div>
+                                <hr>
+                                <script language="javascript">
+                                    var nu = 1;
+                                    function moe(){
+                                        nu++;
+                                        fl = document.createElement('input');
+                                        fl.setAttribute('name','resp-attachment[]')
+                                        fl.setAttribute('type','file')
+                                        tex = document.createTextNode(nu+".")
+                                        br = document.createElement('br')
+                                        document.getElementById('moe').appendChild(tex)
+                                        document.getElementById('moe').appendChild(fl)
+                                        document.getElementById('moe').appendChild(br)
+                                    }
+                                </script>
+
+                                1.<input type="file" name="resp-attachment[]" /><br>
+                                <span id="moe"></span><br>
+                                <input type="button" class="btn" onclick="moe()" value="更多附加檔案" small/>
+
+
+                                <div class="desc">每份檔案容量需小於7MB </div>
                             </column>
                         </row>
                         <section>
@@ -132,9 +155,10 @@
                         </section>
                         {!! Form::close() !!}
                     </fieldset>
-                @elseif($comment_detail[0]-> reply_OK == 3)
-                    <fieldset>
+                @elseif($comment_detail[0]-> reply_OK == 3 || $comment_detail[0]-> reply_OK == 4)
+                    <fieldset style="margin-top: 5%;">
                         <legend>回覆欄</legend>
+                        <hr>
                         <row>
                             <column cols="12">
                                 <label>相關單位回覆 <span class="req">*</span> </label>
@@ -145,7 +169,12 @@
                         <row>
                             <column cols="12">
                                 <label>附加檔案</label>
-                                <h5><a href="/upload/attachments/{{$comment_detail[0]->reply_attachment }}" target="_blank"> {{ $comment_detail[0]->reply_attachment }}</a></h5>
+                                <hr>
+                                @foreach($comment_attachments as $comment_attachment)
+                                    @if($comment_attachment -> attachment_type == 1)
+                                        <h5><a href="/upload/attachments/{{$comment_attachment->attachment }}" target="_blank"> {{ $comment_attachment->attachment }}</a></h5>
+                                    @endif
+                                @endforeach
                             </column>
                         </row>
                     </fieldset>
@@ -153,7 +182,7 @@
 
                 @if (0)
                     <?php $admin = ['1', '2', '3']; ?>
-                    <fieldset>
+                    <fieldset style="margin-top: 5%;">
                         <input type="hidden" id="id" name="id" value="{{$comment_detail[0] -> id}}" />
                         <legend>分派相關單位</legend>
                         <section>

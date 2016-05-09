@@ -3,10 +3,15 @@
 @section('content')
     <row>
 
-        <a href="/generalLogin"><button type="primary" outline >登出</button></a>
+        <span class="btn-group">
+            <a href="/general"><button type="primary" outline>主選單</button></a>
+            <a href="/generalLogin"><button type="red" >登出</button></a>
+        </span>
 
     </row>
-
+    @if(isset($_SESSION['errorFileMIME']) && $_SESSION['errorFileMIME']  == 1)
+    <div class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> 由於您上傳了系統所不允許的檔案，建言已自動撤銷。</div>
+    @endif
     <row cols="1">
 
         <column cols="12">
@@ -14,7 +19,6 @@
                 <table>
                     <thead>
                     <tr>
-                        <th class="width-1">處理編號</th>
                         <th class="width-4">反應主題</th>
                         <th class="width-3">反應日期</th>
                         <th class="width-3">處理狀態</th>
@@ -23,7 +27,6 @@
                     <tbody>
                     @foreach($comment_detail as $comments_detail)
                         <tr>
-                            <td>#{{$comments_detail -> id}}</td>
                             <td><a href="viewCertainProcess/{{$comments_detail -> id}}">{{$comments_detail -> topic}}</a></td>
                             <td>{{$comments_detail -> resp_time}}</td>
                             <td>
@@ -33,8 +36,6 @@
                                     <div class="alert alert-primary"><i class="fa fa-paper-plane"></i> 已發出意見</div>
                                 @elseif($comments_detail -> reply_OK == 1)
                                     <div class="alert alert-warning"><i class="fa fa-share-square"></i> 已派送至相關單位處理</div>
-                                @elseif($comments_detail -> reply_OK == 2)
-                                    <div class="alert alert-warning"><i class="fa fa-refresh"></i> 相關單位已回覆，秘書室統合中</div>
                                 @elseif($comments_detail -> reply_OK == 3)
                                     <div class="alert alert-success"><i class="fa fa-check"></i> 已回覆</div>
                                 @elseif($comments_detail -> reply_OK == 4)
@@ -42,9 +43,9 @@
                                 @endif
                             </td>
                             <td>
-                                @if($comments_detail -> cancel == 1)
+                                @if($comments_detail -> cancel == 1 )
                                     <div class="alert alert-error">已撤銷</div>
-                                @else
+                                @elseif($comments_detail -> reply_OK == 0)
                                     {!! Form::open(['url' => 'general/cancelComment', 'class' => 'forms', 'method' => 'post']) !!}
                                     <input type="hidden" name="comment_id" value="{{$comments_detail -> id}}"/>
                                     {!! Form::submit('撤銷處理', ['class' => 'btn', 'type' => 'primary']) !!}
