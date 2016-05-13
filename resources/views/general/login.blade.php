@@ -6,13 +6,13 @@
             <div>
                 {!! Form::open(['url' => 'generalLogin', 'class' => 'forms', 'method' => 'post']) !!}
                 {{ csrf_field() }}
-                <fieldset class="text-center">
+                <fieldset>
                     <legend>Login data</legend>
                     <row cols="2">
                         <column cols="4">
 
                         </column>
-                        <column cols="8">
+                        <column cols="8" class="text-center">
                             @if(isset($alert_failed))
                                 <div class="alert alert-error">帳號密碼錯誤或是帳戶尚未啟用</div>
                             @endif
