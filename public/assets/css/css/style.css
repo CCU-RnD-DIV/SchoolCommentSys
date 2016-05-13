@@ -8,20 +8,20 @@
     padding-right: 10%;
     padding-bottom: 8px;
 
-    background-color: lavender;
+    background-image: url("https://static.pexels.com/photos/15217/pexels-photo.jpg");
 
 }
 
 .navbar .title-redesign p, h1{
     line-height: 50%;
-    color: darkslategray;
+    color: aliceblue;
 }
 
 .navbar .user-redesign p{
     text-align: right;
     padding-top: 2%;
     line-height: 50%;
-    color: darkslategray;
+    color: aliceblue;
 }
 
 
