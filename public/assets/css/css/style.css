@@ -14,14 +14,14 @@
 
 .navbar .title-redesign p, h1{
     line-height: 50%;
-    color: white;
+    color: darkslategray;
 }
 
 .navbar .user-redesign p{
     text-align: right;
     padding-top: 2%;
     line-height: 50%;
-    color: white;
+    color: darkslategray;
 }
 
 
