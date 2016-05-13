@@ -122,8 +122,8 @@
                             <label>狀態更新</label>
                             <hr>
                             <section>
-                                <label class="checkbox"><input type="radio" name="status" value="3" checked> 已準備回覆</label>
-                                <label class="checkbox"><input type="radio" name="status" value="1"> 已分派至相關單位處理</label>
+                                <label class="checkbox"><input type="radio" name="status" value="1" checked> 已分派至相關單位處理</label>
+                                <label class="checkbox"><input type="radio" name="status" value="3"> 已準備回覆</label>
                                 <label class="checkbox"><input type="radio" name="status" value="4"> 因相關原因，已撤銷本次建言（請於回覆欄填寫撤銷原因）</label>
                             </section>
                         </section>
