@@ -35,7 +35,7 @@
                 </fieldset>
                 {!! Form::close() !!}
                 <figure>
-                    <img src="/assets/img/ssoLogin.svg" alt="" />
+                    <img src="/assets/img/ssoLogin.svg" width="30%" alt="" />
                     <figcaption></figcaption>
                 </figure>
             </div>
