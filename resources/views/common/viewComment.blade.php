@@ -14,7 +14,7 @@
         @elseif ($user_auth == 1)
             <a href="/general/viewProcess"><button type="primary" outline >回首頁</button></a>
         @endif
-             <button id="printBtn" name="print" type="grey" ONCLICK="varitext()" outline>列印此頁</button>
+        <button id="printBtn" name="print" type="grey" ONCLICK="varitext()" outline>列印此頁</button>
     </span>
 
     <br><br><br>
@@ -132,7 +132,7 @@
                             <column cols="12">
                                 <label>相關單位回覆 <span class="req">*</span> </label>
                                 <hr>
-                                {!! Form::textarea('reply-text', null, ['placeholder' => '相關單位回覆', 'row' => 12]) !!}
+                                <textarea rows="12" name="reply-text" placeholder="相關單位回覆">{{$comment_detail[0]->reply-text}}</textarea>
                             </column>
                         </row>
                         <row>
