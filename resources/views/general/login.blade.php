@@ -5,6 +5,7 @@
         <column cols="12">
             <div>
                 {!! Form::open(['url' => 'generalLogin', 'class' => 'forms', 'method' => 'post']) !!}
+                {{ csrf_field() }}
                 <fieldset>
                     <legend>Login data</legend>
                     <row cols="2">

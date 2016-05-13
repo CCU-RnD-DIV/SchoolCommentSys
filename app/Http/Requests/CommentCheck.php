@@ -23,12 +23,19 @@ class CommentCheck extends Request
      */
     public function rules()
     {
+        $mime = 'mimes:jpeg,bmp,png,gif,doc,docx,xls,xlsx,ppt,pptx,pdf,zip,rar,7z|size:7100';
         $rules = [
             'topic' => 'required|max:20',
             'email' => 'required|email',
             'cellphone' => 'required',
             'resp-text' => 'required',
             'resp-expect' => 'required',
+            'resp-attachment1' => $mime,
+            'resp-attachment2' => $mime,
+            'resp-attachment3' => $mime,
+            'resp-attachment4' => $mime,
+            'resp-attachment5' => $mime,
+            
         ];
 
         return $rules;
@@ -44,6 +51,11 @@ class CommentCheck extends Request
             'cellphone.required' => '請填寫您的通訊號碼',
             'resp-text.required' => '請填寫您的欲反應事項',
             'resp-expect.required' => '請填寫您希望的合理解決方案',
+            'resp-attachment1.mimes' => '您第1個檔案上傳了系統所不允許的檔案格式',
+            'resp-attachment2.mimes' => '您第2個檔案上傳了系統所不允許的檔案格式',
+            'resp-attachment3.mimes' => '您第3個檔案上傳了系統所不允許的檔案格式',
+            'resp-attachment4.mimes' => '您第4個檔案上傳了系統所不允許的檔案格式',
+            'resp-attachment5.mimes' => '您第5個檔案上傳了系統所不允許的檔案格式',
         ];
 
         return $messages;

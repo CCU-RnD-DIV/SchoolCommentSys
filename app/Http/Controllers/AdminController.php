@@ -32,35 +32,49 @@ class AdminController extends Controller
 
     public function viewNewProcess () {
         $comment_detail = Comment::where('cancel', '<>', '1')->where('reply_OK', 0)->orwhere('reply_OK', 1)->orwhere('reply_OK', 2)->orderBy('resp_time', 'DESC')->get();
-        $comment_new_count = $this->getProcessCount(0);
-        $comment_admin_count = $this->getProcessCount(2);
-        $comment_finished_count = $this->getProcessCount(3);
+        $comment_count[0] = $this->getProcessCount(0);
+        $comment_count[2] = $this->getProcessCount(2);
+        $comment_count[3] = $this->getProcessCount(3);
+        $comment_count[4] = $this->getProcessCount(4);
         $navi_status = 1;
-        return view('console.process', compact('comment_detail', 'navi_status', 'comment_new_count', 'comment_finished_count', 'comment_admin_count'));
+        return view('console.process', compact('comment_detail', 'navi_status', 'comment_count'));
     }
     public function viewFinishedProcess () {
         $comment_detail = Comment::where('reply_OK', 3)->orderBy('resp_time', 'DESC')->get();
-        $comment_new_count = $this->getProcessCount(0);
-        $comment_admin_count = $this->getProcessCount(2);
-        $comment_finished_count = $this->getProcessCount(3);
+        $comment_count[0] = $this->getProcessCount(0);
+        $comment_count[2] = $this->getProcessCount(2);
+        $comment_count[3] = $this->getProcessCount(3);
+        $comment_count[4] = $this->getProcessCount(4);
         $navi_status = 4;
-        return view('console.process', compact('comment_detail', 'navi_status', 'comment_new_count', 'comment_finished_count', 'comment_admin_count'));
+        return view('console.process', compact('comment_detail', 'navi_status', 'comment_count'));
     }
     public function viewAdminProcess () {
         $comment_detail = Comment::where('reply_OK', 0)->orwhere('reply_OK', 1)->orwhere('reply_OK', 2)->orderBy('resp_time', 'DESC')->get();
-        $comment_new_count = $this->getProcessCount(0);
-        $comment_admin_count = $this->getProcessCount(2);
-        $comment_finished_count = $this->getProcessCount(3);
+        $comment_count[0] = $this->getProcessCount(0);
+        $comment_count[2] = $this->getProcessCount(2);
+        $comment_count[3] = $this->getProcessCount(3);
+        $comment_count[4] = $this->getProcessCount(4);
         $navi_status = 2;
-        return view('console.process', compact('comment_detail', 'navi_status', 'comment_new_count', 'comment_finished_count', 'comment_admin_count'));
+        return view('console.process', compact('comment_detail', 'navi_status', 'comment_count'));
     }
     public function viewAllProcess () {
         $comment_detail = Comment::orderBy('resp_time', 'DESC')->get();
-        $comment_new_count = $this->getProcessCount(0);
-        $comment_admin_count = $this->getProcessCount(2);
-        $comment_finished_count = $this->getProcessCount(3);
+        $comment_count[0] = $this->getProcessCount(0);
+        $comment_count[2] = $this->getProcessCount(2);
+        $comment_count[3] = $this->getProcessCount(3);
+        $comment_count[4] = $this->getProcessCount(4);
         $navi_status = 3;
-        return view('console.process', compact('comment_detail', 'navi_status', 'comment_new_count', 'comment_finished_count', 'comment_admin_count'));
+        return view('console.process', compact('comment_detail', 'navi_status', 'comment_count'));
+    }
+
+    public function viewDenyProcess () {
+        $comment_detail = Comment::where('reply_OK', 4)->orwhere('reply_OK', 5)->orderBy('resp_time', 'DESC')->get();
+        $comment_count[0] = $this->getProcessCount(0);
+        $comment_count[2] = $this->getProcessCount(2);
+        $comment_count[3] = $this->getProcessCount(3);
+        $comment_count[4] = $this->getProcessCount(4);
+        $navi_status = 5;
+        return view('console.process', compact('comment_detail', 'navi_status', 'comment_count'));
     }
 
     /**
@@ -77,6 +91,8 @@ class AdminController extends Controller
             return Comment::where('reply_OK', 2)->count();
         } elseif ($type == 3) {
             return Comment::where('reply_OK', 3)->count();
+        } elseif ($type == 4) {
+            return Comment::where('reply_OK', 4)->orwhere('reply_OK', 5)->count();
         } else {
             return 0;
         }
@@ -191,9 +207,9 @@ class AdminController extends Controller
         $user_detail = User::where('account', Auth::user()->account)->get();
         $hash = md5(Auth::user()->account.$request -> get('topic').$request -> get('resp-text'));
 
-        if (Comment::where('hash', $hash)->count() > 0) {
+        /*if (Comment::where('hash', $hash)->count() > 0) {
             return redirect('general/viewProcess');
-        }
+        }*/
 
         $input = new Comment;
         $input -> sid = Auth::user()->account;
@@ -213,49 +229,30 @@ class AdminController extends Controller
 
         $comment_detail = Comment::where('hash', $hashFileUse)->get();
 
-        $files = $request -> file('resp-attachment');
+        $files[0] = $request -> file('resp-attachment1');
+        $files[1] = $request -> file('resp-attachment2');
+        $files[2] = $request -> file('resp-attachment3');
+        $files[3] = $request -> file('resp-attachment4');
+        $files[4] = $request -> file('resp-attachment5');
 
-        if ($files[0]) {
-            foreach ($files as $file) {
-                $attachmentName = rand(100000, 999999) . '-' . $input->sid . '-' . $input->resp_time . '.' .
-                    $file->getClientOriginalExtension();
-                $type = $file->getMimeType();
+        for ($i = 0; $i < 5; $i++){
 
-                /*if ($type === "application/pdf"
-                    || $type === "image/png"
-                    || $type === "image/jpeg"
-                    || $type === "image/gif"
-                    || $type === "text/plain"
-                    || $type === "application/msword"
-                    || $type === "application/vnd.ms-powerpoint"
-                    || $type === "application/vnd.ms-excel"
-                    || $type === "application/zip") {
+            if (isset($files[$i])) {
+                $attachmentName = rand(1000000, 9999999) . '-' . $input->sid . '-' . $input->resp_time . '.' .
+                    $files[$i]->getClientOriginalExtension();
 
-                    $file->move(
-                        base_path() . '/public/upload/attachments/', $attachmentName
-                    );*/
+                $files[$i]->move(
+                    base_path() . '/public/upload/attachments/', $attachmentName
+                );
 
-                    $upload = new FileAttachments;
-                    $upload->comments_id = $comment_detail[0]->id;
-                    $upload->attachment = $attachmentName;
-                    $upload->attachment_type = 0;
+                $upload = new FileAttachments;
+                $upload->comments_id = $comment_detail[0]->id;
+                $upload->attachment = $attachmentName;
+                $upload->attachment_type = 0;
 
-                    $upload->save();
-
-                    $errorFileMIME = 0;
-
-                /*} else {
-
-                    Comment::where('hash', $hashFileUse)
-                        ->update([
-                            'reply_text' => '上傳系統所禁止的檔案，系統自動撤銷建言。',
-                            'reply_OK' => 4,
-                            'updated_at' => Carbon::now()
-                        ]);
-
-                    $errorFileMIME = 1;
-                }*/
+                $upload->save();
             }
+
         }
 
         if (config('environment.mailEnable')) {
@@ -273,7 +270,7 @@ class AdminController extends Controller
         }
 
         
-        return redirect('general/viewProcess')->with('errorFileMIME', $errorFileMIME);
+        return redirect('general/viewProcess');
     }
     
     public function commentReply (Requests\ReplyCheck $request){
@@ -284,13 +281,19 @@ class AdminController extends Controller
                 'updated_at' => Carbon::now()
             ]);
 
-        $files = $request -> file('resp-attachment');
-        if ($files[0]) {
-            foreach ($files as $file) {
-                $attachmentName = rand(100000, 999999) . '-' . $request->get('comment_id') . '-' . Carbon::now() . '.' .
-                    $file->getClientOriginalExtension();
+        $files[0] = $request -> file('resp-attachment1');
+        $files[1] = $request -> file('resp-attachment2');
+        $files[2] = $request -> file('resp-attachment3');
+        $files[3] = $request -> file('resp-attachment4');
+        $files[4] = $request -> file('resp-attachment5');
 
-                $file->move(
+        for ($i = 0; $i < 5; $i++){
+
+            if (isset($files[$i])) {
+                $attachmentName = rand(100000, 999999) . '-' . $request->get('comment_id') . '-' . Carbon::now() . '.' .
+                    $files[$i]->getClientOriginalExtension();
+
+                $files[$i]->move(
                     base_path() . '/public/upload/attachments/', $attachmentName
                 );
 
@@ -301,7 +304,9 @@ class AdminController extends Controller
 
                 $upload->save();
             }
+
         }
+
 
         Comment::where('id', $request -> get('comment_id'))
             ->update([

@@ -38,3 +38,19 @@
     padding-top: 10%;
     text-align: center;
 }
+
+@media print {
+    body, #printBtn * {
+        visibility: hidden;
+    }
+    #printPage * {
+        visibility: visible;
+    }
+    #printPage {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right:0;
+        bottom:0;
+    }
+}

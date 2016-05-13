@@ -1,19 +1,28 @@
 @extends('blade.header')
 
 @section('content')
+    <SCRIPT LANGUAGE="JavaScript">
 
-    <row>
+        function varitext(text){
+            text=document.getElementById('printPage').innerHTML;
+            print(text);
+        }
+    </script>
+    <span class="btn-group">
         @if($user_auth == 0)
             <a href="/console/viewAllProcess"><button type="primary" outline >回首頁</button></a>
         @elseif ($user_auth == 1)
             <a href="/general/viewProcess"><button type="primary" outline >回首頁</button></a>
         @endif
-    </row>
+             <button id="printBtn" name="print" type="grey" ONCLICK="varitext()" outline>列印此頁</button>
+    </span>
+
+    <br><br><br>
 
     <row cols="1">
 
         <column cols="12">
-            <div>
+            <div id="printPage">
                 <fieldset>
                     @if($comment_detail[0] -> cancel == 1)
                         <div class="alert alert-error"><i class="fa fa-times"></i> 使用者已撤銷</div>
@@ -25,6 +34,8 @@
                         <div class="alert alert-success"><i class="fa fa-check"></i> 已回覆</div>
                     @elseif($comment_detail[0] -> reply_OK == 4)
                         <div class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> 本次建言因相關原因不予回覆，詳情請見回覆欄。</div>
+                    @elseif($comment_detail[0] -> reply_OK == 5)
+                        <div class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> 因上傳系統所禁止的檔案，不予回覆</div>
                     @endif
                     <legend><i class="fa fa-info-circle"></i> 建言者資訊</legend>
 
@@ -104,6 +115,7 @@
 
                 @if ($user_auth == 0 && $comment_detail[0]-> reply_OK != 3 && $comment_detail[0]-> reply_OK != 4)
                     {!! Form::open(['url' => 'console/commentReply','files' => true, 'class' => 'forms', 'method' => 'post']) !!}
+                    {{ csrf_field() }}
                     <fieldset style="margin-top: 5%;">
                         <legend>回覆欄</legend>
                         <section>
@@ -127,27 +139,14 @@
                             <column cols="12">
                                 <label>附加檔案</label>
                                 <hr>
-                                <script language="javascript">
-                                    var nu = 1;
-                                    function moe(){
-                                        nu++;
-                                        fl = document.createElement('input');
-                                        fl.setAttribute('name','resp-attachment[]')
-                                        fl.setAttribute('type','file')
-                                        tex = document.createTextNode(nu+".")
-                                        br = document.createElement('br')
-                                        document.getElementById('moe').appendChild(tex)
-                                        document.getElementById('moe').appendChild(fl)
-                                        document.getElementById('moe').appendChild(br)
-                                    }
-                                </script>
 
-                                1.<input type="file" name="resp-attachment[]" /><br>
-                                <span id="moe"></span><br>
-                                <input type="button" class="btn" onclick="moe()" value="更多附加檔案" small/>
+                                1.<input type="file" name="resp-attachment1" /><br>
+                                2.<input type="file" name="resp-attachment2" /><br>
+                                3.<input type="file" name="resp-attachment3" /><br>
+                                4.<input type="file" name="resp-attachment4" /><br>
+                                5.<input type="file" name="resp-attachment5" /><br>
 
-
-                                <div class="desc">每份檔案容量需小於7MB </div>
+                                <div class="desc">每份檔案容量需小於7MB，只接受 Microsoft Office, PDF, JPG, PNG, GIF, RAR, ZIP, 7z 等格式</div>
                             </column>
                         </row>
                         <section>

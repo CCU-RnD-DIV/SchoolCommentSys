@@ -9,7 +9,7 @@
         </span>
 
     </row>
-    @if(isset($_SESSION['errorFileMIME']) && $_SESSION['errorFileMIME']  == 1)
+    @if(isset($errorFileMIME) && $errorFileMIME  == 1)
     <div class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> 由於您上傳了系統所不允許的檔案，建言已自動撤銷。</div>
     @endif
     <row cols="1">
@@ -40,6 +40,8 @@
                                     <div class="alert alert-success"><i class="fa fa-check"></i> 已回覆</div>
                                 @elseif($comments_detail -> reply_OK == 4)
                                     <div class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> 因相關原因，不予回覆</div>
+                                @elseif($comments_detail -> reply_OK == 5)
+                                    <div class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> 上傳禁止的檔案，不予回覆</div>
                                 @endif
                             </td>
                             <td>
