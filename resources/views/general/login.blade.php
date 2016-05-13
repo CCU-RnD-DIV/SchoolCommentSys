@@ -9,8 +9,11 @@
                 <fieldset class="text-center">
                     <legend>Login data</legend>
                     <row cols="2">
-                        <column cols="4">
-
+                        <column cols="6">
+                            <figure>
+                                <img src="/assets/img/ssoLogin.svg" width="50%" alt="" />
+                                <figcaption></figcaption>
+                            </figure>
                         </column>
                         <column cols="8">
                             @if(isset($alert_failed))
@@ -29,10 +32,7 @@
                             <section>
                                 {!! Form::submit('登入', ['class' => 'btn', 'type' => 'primary']) !!}
                             </section>
-                            <figure>
-                                <img src="/assets/img/ssoLogin.svg" width="50%" alt="" />
-                                <figcaption></figcaption>
-                            </figure>
+
                         </column>
                     </row>
 
