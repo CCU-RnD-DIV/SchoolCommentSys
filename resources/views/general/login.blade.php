@@ -6,12 +6,12 @@
             <div>
                 {!! Form::open(['url' => 'generalLogin', 'class' => 'forms', 'method' => 'post']) !!}
                 {{ csrf_field() }}
-                <fieldset class="text-center">
+                <fieldset>
                     <legend>Login data</legend>
-                    <row cols="2">
+                    <row cols="2" class="text-center">
                         <column cols="6">
                             <figure>
-                                <img src="/assets/img/ssoLogin.svg" width="50%" alt="" />
+                                <img src="/assets/img/ssoLogin.svg" width="80%" alt="" />
                                 <figcaption></figcaption>
                             </figure>
                         </column>
