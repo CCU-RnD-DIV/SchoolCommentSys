@@ -158,13 +158,6 @@ return [
 
         Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-        /*
-         * Document Export Package
-         */
-        //Barryvdh\DomPDF\ServiceProvider::class,
-        Vsmoraes\Pdf\PdfServiceProvider::class,
-        Maatwebsite\Excel\ExcelServiceProvider::class,
-        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
 
 
         /*
@@ -228,14 +221,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Debugbar'  => Barryvdh\Debugbar\Facade::class,
-        'PDF'       => Vsmoraes\Pdf\PdfFacade::class,
-        //'PDF' => Barryvdh\DomPDF\Facade::class,
-        'Excel'     => Maatwebsite\Excel\Facades\Excel::class,
-        'QrCode'    => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
 
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
-        'Recaptcha' => Greggilbert\Recaptcha\Facades\Recaptcha::class,
 
     ],
 
