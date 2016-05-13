@@ -131,10 +131,25 @@
                             <hr>
 
                             1.<input type="file" name="resp-attachment1" /><br>
+                            @if ($errors->has('resp-attachment1'))
+                                <span class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> {!! $errors->first('resp-attachment1') !!}</span>
+                            @endif
                             2.<input type="file" name="resp-attachment2" /><br>
+                            @if ($errors->has('resp-attachment2'))
+                                <span class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> {!! $errors->first('resp-attachment2') !!}</span>
+                            @endif
                             3.<input type="file" name="resp-attachment3" /><br>
+                            @if ($errors->has('resp-attachment3'))
+                                <span class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> {!! $errors->first('resp-attachment3') !!}</span>
+                            @endif
                             4.<input type="file" name="resp-attachment4" /><br>
+                            @if ($errors->has('resp-attachment4'))
+                                <span class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> {!! $errors->first('resp-attachment4') !!}</span>
+                            @endif
                             5.<input type="file" name="resp-attachment5" /><br>
+                            @if ($errors->has('resp-attachment5'))
+                                <span class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> {!! $errors->first('resp-attachment5') !!}</span>
+                            @endif
 
                             <div class="desc">每份檔案容量需小於7MB，只接受 Microsoft Office, PDF, JPG, PNG, GIF, RAR, ZIP, 7z 等格式</div>
                         </column>

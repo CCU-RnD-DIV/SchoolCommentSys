@@ -23,7 +23,7 @@ class CommentCheck extends Request
      */
     public function rules()
     {
-        $mime = 'mimes:jpeg,bmp,png,gif,doc,docx,xls,xlsx,ppt,pptx,pdf,zip,rar,7z|size:7100';
+        $mime = 'mimes:jpeg,bmp,png,gif,doc,docx,xls,xlsx,ppt,pptx,pdf,zip,rar,7z|max:7100';
         $rules = [
             'topic' => 'required|max:20',
             'email' => 'required|email',
@@ -56,6 +56,11 @@ class CommentCheck extends Request
             'resp-attachment3.mimes' => '您第3個檔案上傳了系統所不允許的檔案格式',
             'resp-attachment4.mimes' => '您第4個檔案上傳了系統所不允許的檔案格式',
             'resp-attachment5.mimes' => '您第5個檔案上傳了系統所不允許的檔案格式',
+            'resp-attachment1.max' => '您第1個檔案超過7MB',
+            'resp-attachment2.max' => '您第2個檔案超過7MB',
+            'resp-attachment3.max' => '您第3個檔案超過7MB',
+            'resp-attachment4.max' => '您第4個檔案超過7MB',
+            'resp-attachment5.max' => '您第5個檔案超過7MB',
         ];
 
         return $messages;
