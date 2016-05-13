@@ -132,7 +132,7 @@
                             <column cols="12">
                                 <label>相關單位回覆 <span class="req">*</span> </label>
                                 <hr>
-                                <textarea rows="12" name="reply-text" placeholder="相關單位回覆">{{$comment_detail[0]->reply-text}}</textarea>
+                                <textarea rows="12" name="reply-text" placeholder="相關單位回覆">{{$comment_detail[0]->reply_text}}</textarea>
                             </column>
                         </row>
                         <row>
