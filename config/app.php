@@ -155,8 +155,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
-        Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
+        
         Barryvdh\Debugbar\ServiceProvider::class,
 
 
