@@ -29,15 +29,15 @@
                             <section>
                                 {!! Form::submit('登入', ['class' => 'btn', 'type' => 'primary']) !!}
                             </section>
+                            <figure>
+                                <img src="/assets/img/ssoLogin.svg" width="30%" alt="" />
+                                <figcaption></figcaption>
+                            </figure>
                         </column>
                     </row>
 
                 </fieldset>
                 {!! Form::close() !!}
-                <figure>
-                    <img src="/assets/img/ssoLogin.svg" width="30%" alt="" />
-                    <figcaption></figcaption>
-                </figure>
             </div>
         </column>
 
