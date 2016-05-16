@@ -27,7 +27,7 @@ class ReplyCheck extends Request
         return [
             'comment_id' => 'required',
             'status' => 'required',
-            //'reply-text' => 'required_if:status,1'
+            'reply-text' => 'required_if:status,3,4',
             'resp-attachment1' => $mime,
             'resp-attachment2' => $mime,
             'resp-attachment3' => $mime,
@@ -50,6 +50,7 @@ class ReplyCheck extends Request
             'resp-attachment3.max' => '您第3個檔案超過7MB',
             'resp-attachment4.max' => '您第4個檔案超過7MB',
             'resp-attachment5.max' => '您第5個檔案超過7MB',
+            'reply-text.required_if' => '您必須填寫回覆內容',
         ];
 
         return $messages;

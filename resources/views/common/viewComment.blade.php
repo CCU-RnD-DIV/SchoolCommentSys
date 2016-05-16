@@ -136,6 +136,9 @@
                                 <label>相關單位回覆 <span class="req">*</span> </label>
                                 <hr>
                                 <textarea rows="12" name="reply-text" placeholder="相關單位回覆">{{$comment_detail[0]->reply_text}}</textarea>
+                                @if ($errors->has('reply-text'))
+                                    <span class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> {!! $errors->first('reply-text') !!}</span>
+                                @endif
                             </column>
                         </row>
                         <row>
@@ -160,7 +163,6 @@
                 @elseif($comment_detail[0]-> reply_OK == 3 || $comment_detail[0]-> reply_OK == 4)
                     <fieldset style="margin-top: 5%;">
                         <legend>回覆欄</legend>
-                        <hr>
                         <row>
                             <column cols="12">
                                 <label>相關單位回覆 <span class="req">*</span> </label>
@@ -168,6 +170,7 @@
                                 <h5>{{$comment_detail[0]-> reply_text}}</h5>
                             </column>
                         </row>
+                        <hr>
                         <row>
                             <column cols="12">
                                 <label>附加檔案</label>
