@@ -126,6 +126,9 @@
                                 <label class="checkbox"><input type="radio" name="status" value="3"> 已準備回覆</label>
                                 <label class="checkbox"><input type="radio" name="status" value="4"> 因相關原因，已撤銷本次建言（請於回覆欄填寫撤銷原因）</label>
                             </section>
+                            @if ($errors->has('status'))
+                                <span class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> {!! $errors->first('status') !!}</span>
+                            @endif
                         </section>
                         <input type="hidden" id="comment_id" name="comment_id" value="{{$comment_detail[0] -> id}}" />
                         <row>
