@@ -86,7 +86,7 @@
                                 @if ($errors->has('cellphone'))
                                     <span class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> {!! $errors->first('cellphone') !!}</span>
                                 @endif
-                                {!! Form::text('cellphone', null, ['v-model' => 'cellphone']) !!}
+                                <input type="text" name="cellphone" id="cellphone" v-model="cellphone" value="{{ $aca_user_detail_phone[0]->cellphone }}"/>
                             </div>
                             <div class="desc">若無手機，敬請留下方便聯繫您的通訊號碼</div>
                         </column>

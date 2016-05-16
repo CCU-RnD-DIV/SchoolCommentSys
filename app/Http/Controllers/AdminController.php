@@ -177,12 +177,17 @@ class AdminController extends Controller
                 "a11vstd_rec_tea.email AS stu_email")
             ->where("a11vstd_rec_tea.id", Auth::user()->account)->get();
 
+        $aca_user_detail_phone = DB::connection('pgsql')
+            ->table('a11vstd_all')
+            ->select("a11vstd_all.cellur_no AS cellphone")
+            ->where("a11vstd_all.std_no", Auth::user()->account)->get();
+
         $dept_alias = DB::connection('pgsql')
             ->table('h0rtunit_a_')
             ->select("name", "abbrev")
             ->where("cd", $aca_user_detail[0]->stu_dept_id)->get();
 
-        return view('general.addComment', compact('now', 'user_detail', 'aca_user_detail', 'dept_alias'));
+        return view('general.addComment', compact('now', 'user_detail', 'aca_user_detail', 'dept_alias', 'aca_user_detail_phone'));
     }
     public function AddCommentCancel (Requests\CancelCheck $request) {
 
