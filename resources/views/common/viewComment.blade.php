@@ -113,7 +113,7 @@
                     </row>
                 </fieldset>
 
-                @if ($user_auth == 0 && $comment_detail[0]-> reply_OK != 3 && $comment_detail[0]-> reply_OK != 4 && $comment_detail[0]-> cancel != -1 )
+                @if ($user_auth == 0 && $comment_detail[0]-> reply_OK != 3 && $comment_detail[0]-> reply_OK != 4 && $comment_detail[0]-> cancel != 1 )
                     {!! Form::open(['url' => 'console/commentReply','files' => true, 'class' => 'forms', 'method' => 'post']) !!}
                     {{ csrf_field() }}
                     <fieldset style="margin-top: 5%;">
