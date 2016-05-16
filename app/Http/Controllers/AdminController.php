@@ -173,7 +173,8 @@ class AdminController extends Controller
                 "a11vstd_rec_tea.name AS stu_name",
                 "a11vstd_rec_tea.deptcd AS stu_dept_id",
                 "a11vstd_rec_tea.grade AS stu_grade",
-                "a11vstd_rec_tea.class AS stu_class")
+                "a11vstd_rec_tea.class AS stu_class",
+                "a11vstd_rec_tea.email AS stu_email")
             ->where("a11vstd_rec_tea.id", Auth::user()->account)->get();
 
         $dept_alias = DB::connection('pgsql')

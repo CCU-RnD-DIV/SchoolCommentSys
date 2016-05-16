@@ -96,7 +96,7 @@
                                 @if ($errors->has('email'))
                                     <span class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> {!! $errors->first('email') !!}</span>
                                 @endif
-                                {!! Form::text('email', null, ['v-model' => 'email']) !!}
+                                <input type="text" name="email" id="email" v-model="email" value="{{ $user_detail[0]->stu_email }}"/>
                             </div>
                         </column>
                     </row>
