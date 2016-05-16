@@ -130,23 +130,23 @@
                             <label>附加檔案</label>
                             <hr>
 
-                            1.<input type="file" name="resp-attachment1" /><br>
+                            1.<input type="file" name="resp-attachment1" /><br><br>
                             @if ($errors->has('resp-attachment1'))
                                 <span class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> {!! $errors->first('resp-attachment1') !!}</span>
                             @endif
-                            2.<input type="file" name="resp-attachment2" /><br>
+                            2.<input type="file" name="resp-attachment2" /><br><br>
                             @if ($errors->has('resp-attachment2'))
                                 <span class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> {!! $errors->first('resp-attachment2') !!}</span>
                             @endif
-                            3.<input type="file" name="resp-attachment3" /><br>
+                            3.<input type="file" name="resp-attachment3" /><br><br>
                             @if ($errors->has('resp-attachment3'))
                                 <span class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> {!! $errors->first('resp-attachment3') !!}</span>
                             @endif
-                            4.<input type="file" name="resp-attachment4" /><br>
+                            4.<input type="file" name="resp-attachment4" /><br><br>
                             @if ($errors->has('resp-attachment4'))
                                 <span class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> {!! $errors->first('resp-attachment4') !!}</span>
                             @endif
-                            5.<input type="file" name="resp-attachment5" /><br>
+                            5.<input type="file" name="resp-attachment5" /><br><br>
                             @if ($errors->has('resp-attachment5'))
                                 <span class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> {!! $errors->first('resp-attachment5') !!}</span>
                             @endif
