@@ -66,14 +66,18 @@
                     <hr>
                     <row id="topic">
                         <column cols="12">
-                            <label>反應主題 <span class="req">*</span>
-                                <span v-show="!message" class="error">請填寫您的反應主題，限填 20 字元</span>
-                                <span v-show="message.length > 20" class="error">超過 20 字元，請刪減</span></label>
+
                             <div class="input-prepend">
                                 @if ($errors->has('topic'))
                                     <span class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> {!! $errors->first('topic') !!}</span>
+                                @else
+                                    <span class="alert alert-primary"> 反應主題</span>
                                 @endif
                                 {!! Form::text('topic', null, ['v-model' => 'message']) !!}
+
+                                        <span v-show="!message" class="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> 請填寫您的反應主題，限填 20 字元</span>
+                                        <span v-show="message.length > 20" class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> 超過 20 字元，請刪減</span>
+
                             </div>
 
                         </column>
@@ -81,46 +85,54 @@
 
                     <row>
                         <column cols="6" id="cellphone">
-                            <label>聯絡手機 <span class="req">*</span> <span v-show="!cellphone" class="error">請填寫您的聯絡手機</span></label>
+
                             <div class="input-prepend">
                                 @if ($errors->has('cellphone'))
                                     <span class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> {!! $errors->first('cellphone') !!}</span>
+                                @else
+                                    <span class="alert alert-primary">聯絡手機</span>
                                 @endif
                                 <input type="text" name="cellphone" id="cellphone" v-model="cellphone" value="{{ $aca_user_detail_phone[0]->cellphone }}"/>
+                                    <span v-show="!cellphone" class="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> 請填寫您的聯絡手機</span>
                             </div>
                             <div class="desc">若無手機，敬請留下方便聯繫您的通訊號碼</div>
                         </column>
                         <column cols="6" id="email">
-                            <label>電子郵件 <span class="req">*</span> <span v-show="!email" class="error">請填寫您的電子郵件</span></label>
                             <div class="input-prepend">
                                 @if ($errors->has('email'))
                                     <span class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> {!! $errors->first('email') !!}</span>
+                                @else
+                                    <span class="alert alert-primary">電子郵件</span>
                                 @endif
                                 <input type="text" name="email" id="email" v-model="email" value="{{ $aca_user_detail[0]->stu_email }}"/>
+                                    <span v-show="!email" class="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> 請填寫您的電子郵件</span>
                             </div>
                         </column>
                     </row>
 
                     <row>
                         <column cols="12" id="resptext">
-                            <label>反應事項 <span class="req">*</span> <span v-show="!resptext" class="error">請填寫您的反應事項</span></label>
                             <div class="input-prepend">
                                 @if ($errors->has('resp-text'))
                                     <span class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> {!! $errors->first('resp-text') !!}</span>
+                                @else
+                                    <span class="alert alert-primary">反應事項</span>
                                 @endif
                                 {!! Form::textarea('resp-text', null, ['row' => 12, 'v-model' => 'resptext']) !!}
+                                    <span v-show="!resptext" class="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> 請填寫您的反應事項</span>
                             </div>
                         </column>
                     </row>
 
                     <row>
                         <column cols="12" id="respexpect">
-                            <label>針對反應事項，您認為合理的解決方案應為？ <span class="req">*</span> <span v-show="!respexpect" class="error">請填寫您認為合理的解決方案</span></label>
+                            <label>針對反應事項，您認為合理的解決方案應為？ <span class="req">*</span> </label>
                             <div class="input-prepend">
                                 @if ($errors->has('resp-expect'))
                                     <span class="alert alert-error center"><i class="fa fa-exclamation-triangle"></i> {!! $errors->first('resp-expect') !!}</span>
                                 @endif
                                 {!! Form::textarea('resp-expect', null, ['row' => 12, 'v-model' => 'respexpect']) !!}
+                                    <span v-show="!respexpect" class="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> 請填寫您認為合理的解決方案</span>
                             </div>
                         </column>
                     </row>

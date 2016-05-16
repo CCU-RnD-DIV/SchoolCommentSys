@@ -196,6 +196,7 @@ class AdminController extends Controller
         Comment::where('id', $request -> get('comment_id'))
             ->where('sid', $user_detail[0] -> account )
             ->update([
+                'reply_OK' => -1,
                 'cancel' => 1,
                 'cancel_time' => Carbon::now()
             ]);
