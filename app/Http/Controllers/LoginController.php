@@ -17,7 +17,7 @@ class LoginController extends Controller
 
     public function generalLogin (){
 
-        $showManualLogin = config('environment.mailEnable');
+        $showManualLogin = config('environment.studentManualLogin');
         Auth::logout();
         return view('general.login', compact('showManualLogin'));
 
