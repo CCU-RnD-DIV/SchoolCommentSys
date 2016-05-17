@@ -17,12 +17,12 @@ class LoginController extends Controller
 
     public function generalLogin (){
 
+        Auth::logout();
         if(config('environment.studentManualLogin')){
             $showManualLogin = true;
         }else{
             $showManualLogin = false;
         }
-        Auth::logout();
         return view('general.login', compact('showManualLogin'));
 
 
