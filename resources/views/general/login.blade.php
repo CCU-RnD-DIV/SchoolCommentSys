@@ -12,7 +12,7 @@
 
                         </column>
                         <column cols="8" class="text-center">
-                            @if(1)
+                            @if(config('environment.studentManualLogin'))
                                 {!! Form::open(['url' => 'generalLogin', 'class' => 'forms', 'method' => 'post']) !!}
                                 {{ csrf_field() }}
                                 @if(isset($alert_failed))
