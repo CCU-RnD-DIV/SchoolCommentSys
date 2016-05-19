@@ -145,10 +145,12 @@ class AdminController extends Controller
                     "a11vstd_rec_tea.class AS stu_class")
                 ->where("a11vstd_rec_tea.id", Auth::user()->account)->get();
 
-            $dept_alias = DB::connection('pgsql')
-                ->table('h0rtunit_a_')
-                ->select("name", "abbrev")
-                ->where("cd", $aca_user_detail[0]->stu_dept_id)->get();
+            if (isset($aca_user_detail[0]->stu_dept_id)) {
+                $dept_alias = DB::connection('pgsql')
+                    ->table('h0rtunit_a_')
+                    ->select("name", "abbrev")
+                    ->where("cd", $aca_user_detail[0]->stu_dept_id)->get();
+            }
             
             $comment_attachments = FileAttachments::where('comments_id', $id)->get();
             $comment_user_detail = User::where('account', $comment_detail[0] -> sid)->get();
