@@ -104,7 +104,7 @@
                                 @else
                                     <span class="alert alert-primary">電子郵件</span>
                                 @endif
-                                <input type="text" name="email" id="email" v-model="email" value="@if (isset($aca_user_detail[0]->stu_email)){{ $aca_user_detail[0]->stu_email }} @endif"/>
+                                <input type="text" name="email" id="email" v-model="email" value="@if (isset($aca_user_detail[0]->stu_email)){{ trim($aca_user_detail[0]->stu_email) }} @endif"/>
                                     <span v-show="!email" class="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> 請填寫您的電子郵件</span>
                             </div>
                         </column>
