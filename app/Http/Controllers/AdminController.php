@@ -86,7 +86,7 @@ class AdminController extends Controller
 
     protected function getProcessCount($type) {
         if ($type == 0){
-            return Comment::where('reply_OK', 0)->count();
+            return Comment::where('reply_OK', 0)->orwhere('reply_OK', 1)->orwhere('reply_OK', 2)->count();
         } elseif ($type == 2) {
             return Comment::where('reply_OK', 2)->count();
         } elseif ($type == 3) {
