@@ -109,6 +109,8 @@ class AdminController extends Controller
 
             $comment_detail = Comment::where('id', $id)->get();
 
+            if (isset($comment_detail[0]->id)) return redirect('/console');
+
             $aca_user_detail = DB::connection('pgsql')
                 ->table('a11vstd_rec_tea')
                 ->select("a11vstd_rec_tea.id AS stu_id",
@@ -137,6 +139,8 @@ class AdminController extends Controller
         }else{
 
             $comment_detail = Comment::where('id', $id)->where('sid', Auth::user()->account)->get();
+
+            if (isset($comment_detail[0]->id)) return redirect('/general');
 
             $aca_user_detail = DB::connection('pgsql')
                 ->table('a11vstd_rec_tea')
