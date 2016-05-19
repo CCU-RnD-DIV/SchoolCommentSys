@@ -301,33 +301,35 @@ class AdminController extends Controller
                 'updated_at' => Carbon::now()
             ]);
 
-        $files[0] = $request -> file('resp-attachment1');
-        $files[1] = $request -> file('resp-attachment2');
-        $files[2] = $request -> file('resp-attachment3');
-        $files[3] = $request -> file('resp-attachment4');
-        $files[4] = $request -> file('resp-attachment5');
+        if ($request->get('status') != 1) {
+            $files[0] = $request->file('resp-attachment1');
+            $files[1] = $request->file('resp-attachment2');
+            $files[2] = $request->file('resp-attachment3');
+            $files[3] = $request->file('resp-attachment4');
+            $files[4] = $request->file('resp-attachment5');
 
-        for ($i = 0; $i < 5; $i++){
+            for ($i = 0; $i < 5; $i++) {
 
-            if (isset($files[$i])) {
-                $attachmentName = rand(100000, 999999) . '-' . $request->get('comment_id') . '-' . Carbon::now() . '.' .
-                    $files[$i]->getClientOriginalExtension();
+                if (isset($files[$i])) {
+                    $attachmentName = rand(100000, 999999) . '-' . $request->get('comment_id') . '-' . Carbon::now() . '.' .
+                        $files[$i]->getClientOriginalExtension();
 
-                $desName = $files[$i]->getClientOriginalName();
+                    $desName = $files[$i]->getClientOriginalName();
 
-                $files[$i]->move(
-                    base_path() . '/public/upload/attachments/', $attachmentName
-                );
+                    $files[$i]->move(
+                        base_path() . '/public/upload/attachments/', $attachmentName
+                    );
 
-                $upload = new FileAttachments;
-                $upload->comments_id = $request->get('comment_id');
-                $upload->attachment = $attachmentName;
-                $upload->attachment_type = 1;
-                $upload->file_des = $desName;
+                    $upload = new FileAttachments;
+                    $upload->comments_id = $request->get('comment_id');
+                    $upload->attachment = $attachmentName;
+                    $upload->attachment_type = 1;
+                    $upload->file_des = $desName;
 
-                $upload->save();
+                    $upload->save();
+                }
+
             }
-
         }
 
 
