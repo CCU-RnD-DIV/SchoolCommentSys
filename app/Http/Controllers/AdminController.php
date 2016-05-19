@@ -279,7 +279,9 @@ class AdminController extends Controller
             Mail::send('common.viewCommentEmail', ['comment_detail' => $comment_detail, 'comment_user_detail' => $user_detail], function($message) use ($comment_detail)
             {
                 $message->from('k12cc@ccu.edu.tw', '校務建言系統');
-                $message->to(config('environment.primaryReceiver'))->cc(config('environment.secondaryReceiver'))->cc(config('environment.testReceiver'))->subject('新建言：'.$comment_detail[0]->topic);
+                $message->to(config('environment.primaryReceiver'))->cc(config('environment.secondaryReceiver'))
+                    ->cc(config('environment.testReceiver'))->subject('新建言：'.$comment_detail[0]->topic);
+                $message->to(config('environment.testReceiver'))->subject('新建言：'.$comment_detail[0]->topic);
             });
         }else{
             Mail::send('common.viewCommentEmail', ['comment_detail' => $comment_detail, 'comment_user_detail' => $user_detail], function($message) use ($comment_detail)
