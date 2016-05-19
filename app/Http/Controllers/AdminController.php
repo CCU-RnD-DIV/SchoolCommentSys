@@ -58,7 +58,7 @@ class AdminController extends Controller
         return view('console.process', compact('comment_detail', 'navi_status', 'comment_count'));
     }
     public function viewAllProcess () {
-        $comment_detail = Comment::orderBy('resp_time', 'DESC')->paginate(1);
+        $comment_detail = Comment::orderBy('resp_time', 'DESC')->paginate(50);
         $comment_count[0] = $this->getProcessCount(0);
         $comment_count[2] = $this->getProcessCount(2);
         $comment_count[3] = $this->getProcessCount(3);
