@@ -63,7 +63,7 @@
                     </row>
                     <row>
                         <column cols="6">
-                            <label>聯絡手機 <span class="req">*</span> </label>
+                            <label>聯絡電話 <span class="req">*</span> </label>
                             <hr>
                             <h5>{{ $comment_detail[0]->cellphone }}</h5>
 

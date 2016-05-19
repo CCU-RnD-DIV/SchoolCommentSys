@@ -60,8 +60,8 @@
 
                         <row>
                             <column cols="6">
-                                <label>聯絡手機 <span class="req">*</span> </label>
-                                {!! Form::text('cellphone', null, ['placeholder' => '聯絡手機']) !!}
+                                <label>聯絡電話 <span class="req">*</span> </label>
+                                {!! Form::text('cellphone', null, ['placeholder' => '聯絡電話']) !!}
                                 <div class="desc">Description</div>
                             </column>
                             <column cols="6">

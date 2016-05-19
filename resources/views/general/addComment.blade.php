@@ -90,7 +90,7 @@
                                 @if ($errors->has('cellphone'))
                                     <span class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> {!! $errors->first('cellphone') !!}</span>
                                 @else
-                                    <span class="alert alert-primary">聯絡手機</span>
+                                    <span class="alert alert-primary">聯絡電話</span>
                                 @endif
                                 <input type="text" name="cellphone" id="cellphone" v-model="cellphone" value="@if (isset($aca_user_detail_phone[0]->cellphone)){{ $aca_user_detail_phone[0]->cellphone }} @endif"/>
                                     <span v-show="!cellphone" class="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> 請填寫您的聯絡手機</span>
