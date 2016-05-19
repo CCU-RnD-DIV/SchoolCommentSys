@@ -23,7 +23,7 @@ class ReplyCheck extends Request
      */
     public function rules()
     {
-        $mime = 'mimes:jpeg,bmp,png,gif,doc,docx,xls,xlsx,ppt,pptx,pdf,zip,rar,7z|max:7100';
+        $mime = 'mimes:jpeg,bmp,png,gif,doc,docx,xls,xlsx,ppt,pptx,pdf,zip,rar,7z,txt|max:7100';
         return [
             'comment_id' => 'required',
             'status' => 'required',
