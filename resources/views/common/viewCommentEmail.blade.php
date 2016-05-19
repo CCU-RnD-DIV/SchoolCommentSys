@@ -56,14 +56,14 @@
                         <column cols="12">
                             <label>欲反應事項 <span class="req">*</span> </label>
                             <hr>
-                            <h5>{{ $comment_detail[0]->resp_text }}</h5>
+                            <h5 style="word-break:break-all">{{ $comment_detail[0]->resp_text }}</h5>
                         </column>
                     </row>
                     <row>
                         <column cols="12">
                             <label>針對所反應事項，您認為合理的解決方案應為？ <span class="req">*</span> </label>
                             <hr>
-                            <h5>{{ $comment_detail[0]->resp_expect }}</h5>
+                            <h5 style="word-break:break-all">{{ $comment_detail[0]->resp_expect }}</h5>
                         </column>
                     </row>
                 </fieldset>
