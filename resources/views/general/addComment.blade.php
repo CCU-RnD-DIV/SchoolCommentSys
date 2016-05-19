@@ -52,15 +52,15 @@
                         </column>
                         <column cols="3">
                             <label>學號</label>
-                            <h5>{{ $user_detail[0]->account }}</h5>
+                            <h5>@if (isset($user_detail[0]->account)){{ $user_detail[0]->account }}@endif</h5>
                         </column>
                         <column cols="3">
                             <label>姓名</label>
-                            <h5>{{ $user_detail[0]->name }}</h5>
+                            <h5>@if (isset($user_detail[0]->name)){{ $user_detail[0]->name }}@endif</h5>
                         </column>
                         <column cols="3">
                             <label>系級</label>
-                            <h5>{{ $dept_alias[0]->name }} {{ $aca_user_detail[0]->stu_grade }}{{ $aca_user_detail[0]->stu_class }}  </h5>
+                            <h5>@if (isset($dept_alias[0]->name)){{ $dept_alias[0]->name }} {{ $aca_user_detail[0]->stu_grade }}{{ $aca_user_detail[0]->stu_class }} @endif </h5>
                         </column>
                     </row>
                     <hr>
@@ -92,7 +92,7 @@
                                 @else
                                     <span class="alert alert-primary">聯絡手機</span>
                                 @endif
-                                <input type="text" name="cellphone" id="cellphone" v-model="cellphone" value="{{ $aca_user_detail_phone[0]->cellphone }}"/>
+                                <input type="text" name="cellphone" id="cellphone" v-model="cellphone" value="@if (isset($aca_user_detail_phone[0]->cellphone)){{ $aca_user_detail_phone[0]->cellphone }} @endif"/>
                                     <span v-show="!cellphone" class="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> 請填寫您的聯絡手機</span>
                             </div>
                             <div class="desc">若無手機，敬請留下方便聯繫您的通訊號碼</div>
@@ -104,7 +104,7 @@
                                 @else
                                     <span class="alert alert-primary">電子郵件</span>
                                 @endif
-                                <input type="text" name="email" id="email" v-model="email" value="{{ $aca_user_detail[0]->stu_email }}"/>
+                                <input type="text" name="email" id="email" v-model="email" value="@if (isset($aca_user_detail[0]->stu_email)){{ $aca_user_detail[0]->stu_email }} @endif"/>
                                     <span v-show="!email" class="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> 請填寫您的電子郵件</span>
                             </div>
                         </column>
