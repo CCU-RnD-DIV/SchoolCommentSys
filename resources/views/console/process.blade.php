@@ -50,6 +50,9 @@
                     @endforeach
                     </tbody>
                 </table>
+                <div class="text-center">
+                    {{$comment_detail->render()}}
+                </div>
             </div>
         </column>
 

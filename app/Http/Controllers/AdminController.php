@@ -26,12 +26,12 @@ class AdminController extends Controller
     }
 
     public function viewProcess () {
-        $comment_detail = Comment::where('sid', Auth::user()->account)->orderBy('resp_time', 'DESC')->get();
+        $comment_detail = Comment::where('sid', Auth::user()->account)->orderBy('resp_time', 'DESC')->paginate(50);
         return view('general.process', compact('comment_detail'));
     }
 
     public function viewNewProcess () {
-        $comment_detail = Comment::where('cancel', '<>', '1')->where('reply_OK', 0)->orwhere('reply_OK', 1)->orwhere('reply_OK', 2)->orderBy('resp_time', 'DESC')->get();
+        $comment_detail = Comment::where('cancel', '<>', '1')->where('reply_OK', 0)->orwhere('reply_OK', 1)->orwhere('reply_OK', 2)->orderBy('resp_time', 'DESC')->paginate(50);
         $comment_count[0] = $this->getProcessCount(0);
         $comment_count[2] = $this->getProcessCount(2);
         $comment_count[3] = $this->getProcessCount(3);
@@ -40,7 +40,7 @@ class AdminController extends Controller
         return view('console.process', compact('comment_detail', 'navi_status', 'comment_count'));
     }
     public function viewFinishedProcess () {
-        $comment_detail = Comment::where('reply_OK', 3)->orderBy('resp_time', 'DESC')->get();
+        $comment_detail = Comment::where('reply_OK', 3)->orderBy('resp_time', 'DESC')->paginate(50);
         $comment_count[0] = $this->getProcessCount(0);
         $comment_count[2] = $this->getProcessCount(2);
         $comment_count[3] = $this->getProcessCount(3);
@@ -49,7 +49,7 @@ class AdminController extends Controller
         return view('console.process', compact('comment_detail', 'navi_status', 'comment_count'));
     }
     public function viewAdminProcess () {
-        $comment_detail = Comment::where('reply_OK', 0)->orwhere('reply_OK', 1)->orwhere('reply_OK', 2)->orderBy('resp_time', 'DESC')->get();
+        $comment_detail = Comment::where('reply_OK', 0)->orwhere('reply_OK', 1)->orwhere('reply_OK', 2)->orderBy('resp_time', 'DESC')->paginate(50);
         $comment_count[0] = $this->getProcessCount(0);
         $comment_count[2] = $this->getProcessCount(2);
         $comment_count[3] = $this->getProcessCount(3);
@@ -58,7 +58,7 @@ class AdminController extends Controller
         return view('console.process', compact('comment_detail', 'navi_status', 'comment_count'));
     }
     public function viewAllProcess () {
-        $comment_detail = Comment::orderBy('resp_time', 'DESC')->get();
+        $comment_detail = Comment::orderBy('resp_time', 'DESC')->paginate(50);
         $comment_count[0] = $this->getProcessCount(0);
         $comment_count[2] = $this->getProcessCount(2);
         $comment_count[3] = $this->getProcessCount(3);
@@ -68,7 +68,7 @@ class AdminController extends Controller
     }
 
     public function viewDenyProcess () {
-        $comment_detail = Comment::where('reply_OK', 4)->orwhere('reply_OK', 5)->orderBy('resp_time', 'DESC')->get();
+        $comment_detail = Comment::where('reply_OK', 4)->orwhere('reply_OK', 5)->orderBy('resp_time', 'DESC')->paginate(50);
         $comment_count[0] = $this->getProcessCount(0);
         $comment_count[2] = $this->getProcessCount(2);
         $comment_count[3] = $this->getProcessCount(3);
