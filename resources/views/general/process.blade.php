@@ -46,7 +46,7 @@
                             </td>
                             <td>
                                 @if($comments_detail -> cancel == 1 )
-                                    <div class="alert alert-error">已撤銷</div>
+
                                 @elseif($comments_detail -> reply_OK == 0)
                                     {!! Form::open(['url' => 'general/cancelComment', 'class' => 'forms', 'method' => 'post']) !!}
                                     <input type="hidden" name="comment_id" value="{{$comments_detail -> id}}"/>
