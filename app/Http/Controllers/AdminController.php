@@ -22,7 +22,7 @@ class AdminController extends Controller
     }
 
     public function Console () {
-        return view('console.process');
+        return redirect('/console/viewAllProcess');
     }
 
     public function viewProcess () {
