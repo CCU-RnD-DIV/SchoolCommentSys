@@ -53,12 +53,12 @@
                         <column cols="3">
                             <label>姓名</label>
                             <hr>
-                            <h5>{{ $comment_user_detail[0]->name  }}</h5>
+                            <h5>@if (isset($comment_user_detail[0]->name)){{ $comment_user_detail[0]->name  }}@endif</h5>
                         </column>
                         <column cols="3">
                             <label>系級</label>
                             <hr>
-                            <h5>{{ $dept_alias[0]->name }} {{ $aca_user_detail[0]->stu_grade }}{{ $aca_user_detail[0]->stu_class }} </h5>
+                            <h5>@if (isset($dept_alias[0]->name)){{ $dept_alias[0]->name }} {{ $aca_user_detail[0]->stu_grade }}{{ $aca_user_detail[0]->stu_class }} @endif</h5>
                         </column>
                     </row>
                     <row>
