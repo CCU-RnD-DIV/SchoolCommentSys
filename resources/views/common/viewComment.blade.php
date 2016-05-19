@@ -170,7 +170,6 @@
                                 <h5>{{$comment_detail[0]-> reply_text}}</h5>
                             </column>
                         </row>
-                        <hr>
                         <row>
                             <column cols="12">
                                 <label>附加檔案</label>
