@@ -182,10 +182,12 @@ class AdminController extends Controller
             ->select("a11vstd_all.cellur_no AS cellphone")
             ->where("a11vstd_all.std_no", Auth::user()->account)->get();
 
-        $dept_alias = DB::connection('pgsql')
-            ->table('h0rtunit_a_')
-            ->select("name", "abbrev")
-            ->where("cd", $aca_user_detail[0]->stu_dept_id)->get();
+        if (isset($aca_user_detail[0]->stu_dept_id)) {
+            $dept_alias = DB::connection('pgsql')
+                ->table('h0rtunit_a_')
+                ->select("name", "abbrev")
+                ->where("cd", $aca_user_detail[0]->stu_dept_id)->get();
+        }
 
         return view('general.addComment', compact('now', 'user_detail', 'aca_user_detail', 'dept_alias', 'aca_user_detail_phone'));
     }
