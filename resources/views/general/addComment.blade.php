@@ -93,7 +93,7 @@
                                     <span class="alert alert-primary">聯絡電話</span>
                                 @endif
                                 <input type="text" name="cellphone" id="cellphone" v-model="cellphone" value="@if (isset($aca_user_detail_phone[0]->cellphone)){{ $aca_user_detail_phone[0]->cellphone }} @endif"/>
-                                    <span v-show="!cellphone" class="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> 請填寫您的聯絡手機</span>
+                                    <span v-show="!cellphone" class="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> 請填寫您的聯絡電話</span>
                             </div>
                             <div class="desc">若無手機，敬請留下方便聯繫您的通訊號碼</div>
                         </column>
