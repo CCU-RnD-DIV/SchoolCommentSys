@@ -258,6 +258,8 @@ class AdminController extends Controller
                 $attachmentName = rand(1000000, 9999999) . '-' . $input->sid . '-' . $input->resp_time . '.' .
                     $files[$i]->getClientOriginalExtension();
 
+                $desName = $files[$i]->getClientOriginalName();
+
                 $files[$i]->move(
                     base_path() . '/public/upload/attachments/', $attachmentName
                 );
@@ -266,6 +268,7 @@ class AdminController extends Controller
                 $upload->comments_id = $comment_detail[0]->id;
                 $upload->attachment = $attachmentName;
                 $upload->attachment_type = 0;
+                $upload->file_des = $desName;
 
                 $upload->save();
             }
@@ -310,6 +313,8 @@ class AdminController extends Controller
                 $attachmentName = rand(100000, 999999) . '-' . $request->get('comment_id') . '-' . Carbon::now() . '.' .
                     $files[$i]->getClientOriginalExtension();
 
+                $desName = $files[$i]->getClientOriginalName();
+
                 $files[$i]->move(
                     base_path() . '/public/upload/attachments/', $attachmentName
                 );
@@ -318,6 +323,7 @@ class AdminController extends Controller
                 $upload->comments_id = $request->get('comment_id');
                 $upload->attachment = $attachmentName;
                 $upload->attachment_type = 1;
+                $upload->file_des = $desName;
 
                 $upload->save();
             }

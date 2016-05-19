@@ -106,7 +106,7 @@
                             <hr>
                             @foreach($comment_attachments as $comment_attachment)
                                 @if($comment_attachment -> attachment_type == 0)
-                                    <h5><a href="/upload/attachments/{{$comment_attachment->attachment }}" target="_blank"> {{ $comment_attachment->attachment }}</a></h5>
+                                    <h5><a href="/upload/attachments/{{$comment_attachment->attachment }}" target="_blank"> {{ $comment_attachment->file_des }}</a></h5>
                                 @endif
                             @endforeach
                         </column>
@@ -176,7 +176,7 @@
                                 <hr>
                                 @foreach($comment_attachments as $comment_attachment)
                                     @if($comment_attachment -> attachment_type == 1)
-                                        <h5><a href="/upload/attachments/{{$comment_attachment->attachment }}" target="_blank"> {{ $comment_attachment->attachment }}</a></h5>
+                                        <h5><a href="/upload/attachments/{{$comment_attachment->attachment }}" target="_blank"> {{ $comment_attachment->file_des }}</a></h5>
                                     @endif
                                 @endforeach
                             </column>
