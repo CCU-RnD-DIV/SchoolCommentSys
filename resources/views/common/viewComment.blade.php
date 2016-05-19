@@ -167,7 +167,7 @@
                             <column cols="12">
                                 <label>相關單位回覆 <span class="req">*</span> </label>
                                 <hr>
-                                <h5>{{$comment_detail[0]-> reply_text}}</h5>
+                                <h5 style="word-break:break-all">{{$comment_detail[0]-> reply_text}}</h5>
                             </column>
                         </row>
                         <row>
