@@ -152,7 +152,7 @@
                                 4.<input type="file" name="resp-attachment4" /><br>
                                 5.<input type="file" name="resp-attachment5" /><br>
 
-                                <div class="desc">每份檔案容量需小於7MB，只接受 Microsoft Office, PDF, JPG, PNG, GIF, RAR, ZIP, 7z 等格式</div>
+                                <div class="desc">每份檔案容量需小於7MB，只接受 Word, Excel, PowerPoint, PDF, JPG, PNG, GIF, RAR, ZIP, 7z 等格式</div>
                             </column>
                         </row>
                         <section>

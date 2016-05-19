@@ -163,7 +163,7 @@
                                 <span class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> {!! $errors->first('resp-attachment5') !!}</span>
                             @endif
 
-                            <div class="desc">每份檔案容量需小於7MB，只接受 Microsoft Office, PDF, JPG, PNG, GIF, RAR, ZIP, 7z 等格式</div>
+                            <div class="desc">每份檔案容量需小於7MB，只接受 Word, Excel, PowerPoint, PDF, JPG, PNG, GIF, RAR, ZIP, 7z 等格式</div>
                         </column>
                     </row>
                     <section id="submit">
