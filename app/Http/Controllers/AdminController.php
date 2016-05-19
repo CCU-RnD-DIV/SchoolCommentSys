@@ -109,7 +109,7 @@ class AdminController extends Controller
 
             $comment_detail = Comment::where('id', $id)->get();
 
-            if (!isset($comment_detail[0]->id)) return redirect('/console');
+            //if (!isset($comment_detail[0]->id)) return redirect('/console');
 
             $aca_user_detail = DB::connection('pgsql')
                 ->table('a11vstd_rec_tea')
