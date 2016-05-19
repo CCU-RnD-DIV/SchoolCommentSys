@@ -319,6 +319,7 @@ class AdminController extends Controller
             ->update([
                 'reply_text' => $request -> get('reply-text'),
                 'reply_OK' => $request->get('status'),
+                'reply_time' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ]);
 
