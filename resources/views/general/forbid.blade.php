@@ -12,7 +12,7 @@
 
                         </column>
                         <column cols="8" class="text-center">
-                            <h1 style="color: #2f77d1 !important;"><i class="fa fa-cog fa-spin fa-5x" aria-hidden="true"></i></h1>
+                            <h1 style="color: #2f77d1 !important;"><i class="fa fa-rocket fa-5x" aria-hidden="true"></i></h1>
                             <h3>校務建言系統維護中，很快就會回來了！</h3>
                         </column>
                     </row>
