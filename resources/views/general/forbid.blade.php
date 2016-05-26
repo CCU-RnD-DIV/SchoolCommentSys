@@ -12,7 +12,7 @@
 
                         </column>
                         <column cols="8" class="text-center">
-                            <i class="fa fa-rocket fa-6" aria-hidden="true"></i>
+                            <i class="fa fa-rocket fa-5x" aria-hidden="true"></i>
                             <h3>校務建言系統維護中，很快就會回來了！</h3>
                         </column>
                     </row>
