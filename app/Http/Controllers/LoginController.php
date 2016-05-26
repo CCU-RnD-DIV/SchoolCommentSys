@@ -45,6 +45,10 @@ class LoginController extends Controller
     public function getPermission(Request $request)
     {
 
+        if (config('environment.ssoActivate') === false){
+            return view('general.forbid');
+        }
+
         if (! is_null(config('environment.sso_url')) && $request->has(['miXd', 'ticket'])) {
             $username = $this->ssoAuth($request->input('miXd'), $request->input('ticket'));
 
