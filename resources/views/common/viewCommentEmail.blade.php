@@ -66,6 +66,13 @@
                             <h5 style="word-break:break-all">{{ $comment_detail[0]->resp_expect }}</h5>
                         </column>
                     </row>
+                    <row>
+                        <column cols="12">
+                            <label>欲查看及回覆此建言請至系統管理介面，網址如下：</label>
+                            <hr>
+                            <a href="https://center.ccu.edu.tw:10000/console" target="_blank">https://center.ccu.edu.tw:10000/console</h5>
+                        </column>
+                    </row>
                 </fieldset>
             </div>
         </column>
