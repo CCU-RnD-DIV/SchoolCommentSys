@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>國立中正大學 校務建言系統</title>
+    <title>吳昇老師的助教們 案件陳情系統</title>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,8 +19,8 @@
 <div class="navbar">
     <blocks cols="4">
         <div class="title-redesign">
-            <p>國立中正大學</p>
-            <h1>校務建言系統</h1>
+            <p>吳昇老師的助教們</p>
+            <h1>案件陳情系統</h1>
         </div>
 
     </blocks>
