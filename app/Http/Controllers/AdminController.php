@@ -175,28 +175,30 @@ class AdminController extends Controller
 
         $now = Carbon::now();
         $user_detail = User::where('account', Auth::user()->account)->get();
-        $aca_user_detail = DB::connection('pgsql')
-            ->table('a11vstd_rec_tea')
-            ->select("a11vstd_rec_tea.id AS stu_id",
-                "a11vstd_rec_tea.name AS stu_name",
-                "a11vstd_rec_tea.deptcd AS stu_dept_id",
-                "a11vstd_rec_tea.grade AS stu_grade",
-                "a11vstd_rec_tea.class AS stu_class",
-                "a11vstd_rec_tea.email AS stu_email")
-            ->where("a11vstd_rec_tea.id", Auth::user()->account)->get();
+//        $aca_user_detail = DB::connection('pgsql')
+//            ->table('a11vstd_rec_tea')
+//            ->select("a11vstd_rec_tea.id AS stu_id",
+//                "a11vstd_rec_tea.name AS stu_name",
+//                "a11vstd_rec_tea.deptcd AS stu_dept_id",
+//                "a11vstd_rec_tea.grade AS stu_grade",
+//                "a11vstd_rec_tea.class AS stu_class",
+//                "a11vstd_rec_tea.email AS stu_email")
+//            ->where("a11vstd_rec_tea.id", Auth::user()->account)->get();
+//
+//        $aca_user_detail_phone = DB::connection('pgsql')
+//            ->table('a11vstd_all')
+//            ->select("a11vstd_all.cellur_no AS cellphone")
+//            ->where("a11vstd_all.std_no", Auth::user()->account)->get();
 
-        $aca_user_detail_phone = DB::connection('pgsql')
-            ->table('a11vstd_all')
-            ->select("a11vstd_all.cellur_no AS cellphone")
-            ->where("a11vstd_all.std_no", Auth::user()->account)->get();
-
-        if (isset($aca_user_detail[0]->stu_dept_id)) {
-            $dept_alias = DB::connection('pgsql')
-                ->table('h0rtunit_a_')
-                ->select("name", "abbrev")
-                ->where("cd", $aca_user_detail[0]->stu_dept_id)->get();
-        }
-
+//        if (isset($aca_user_detail[0]->stu_dept_id)) {
+//            $dept_alias = DB::connection('pgsql')
+//                ->table('h0rtunit_a_')
+//                ->select("name", "abbrev")
+//                ->where("cd", $aca_user_detail[0]->stu_dept_id)->get();
+//        }
+        $dept_alias = null;
+        $aca_user_detail = null;
+        $aca_user_detail_phone = null;
         return view('general.addComment', compact('now', 'user_detail', 'aca_user_detail', 'dept_alias', 'aca_user_detail_phone'));
     }
     public function AddCommentCancel (Requests\CancelCheck $request) {
@@ -275,21 +277,21 @@ class AdminController extends Controller
 
         }
 
-        if (config('environment.mailEnable')) {
-            Mail::send('common.viewCommentEmail', ['comment_detail' => $comment_detail, 'comment_user_detail' => $user_detail], function($message) use ($comment_detail)
-            {
-                $message->from('k12cc@ccu.edu.tw', '校務建言系統');
-                $message->to(config('environment.primaryReceiver'))->cc(config('environment.secondaryReceiver'))
-                    ->cc(config('environment.testReceiver'))->subject('新建言：'.$comment_detail[0]->topic);
-                $message->to(config('environment.testReceiver'))->subject('新建言：'.$comment_detail[0]->topic);
-            });
-        }else{
-            Mail::send('common.viewCommentEmail', ['comment_detail' => $comment_detail, 'comment_user_detail' => $user_detail], function($message) use ($comment_detail)
-            {
-                $message->from('k12cc@ccu.edu.tw', '校務建言系統');
-                $message->to(config('environment.testReceiver'))->subject('新建言：'.$comment_detail[0]->topic);
-            });
-        }
+//        if (config('environment.mailEnable')) {
+//            Mail::send('common.viewCommentEmail', ['comment_detail' => $comment_detail, 'comment_user_detail' => $user_detail], function($message) use ($comment_detail)
+//            {
+//                $message->from('k12cc@ccu.edu.tw', '校務建言系統');
+//                $message->to(config('environment.primaryReceiver'))->cc(config('environment.secondaryReceiver'))
+//                    ->cc(config('environment.testReceiver'))->subject('新建言：'.$comment_detail[0]->topic);
+//                $message->to(config('environment.testReceiver'))->subject('新建言：'.$comment_detail[0]->topic);
+//            });
+//        }else{
+//            Mail::send('common.viewCommentEmail', ['comment_detail' => $comment_detail, 'comment_user_detail' => $user_detail], function($message) use ($comment_detail)
+//            {
+//                $message->from('k12cc@ccu.edu.tw', '校務建言系統');
+//                $message->to(config('environment.testReceiver'))->subject('新建言：'.$comment_detail[0]->topic);
+//            });
+//        }
 
         
         return redirect('general/viewProcess');

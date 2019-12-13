@@ -20,6 +20,9 @@ $router -> get('/getPermission', 'LoginController@Index');
 
 $router->get('generalLogin', 'LoginController@generalLogin');
 
+$router->get('generalReg', 'RegisterController@generalReg');
+$router->post('generalReg', 'RegisterController@generalRegPost');
+
 $router->get('getPermission', ['as' => 'getPermission', 'uses' => 'LoginController@getPermission']);
 
 $router->get('consoleLogin', 'LoginController@consoleLogin');
