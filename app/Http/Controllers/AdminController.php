@@ -111,21 +111,24 @@ class AdminController extends Controller
 
             //if (!isset($comment_detail[0]->id)) return redirect('/console');
 
-            $aca_user_detail = DB::connection('pgsql')
-                ->table('a11vstd_rec_tea')
-                ->select("a11vstd_rec_tea.id AS stu_id",
-                    "a11vstd_rec_tea.name AS stu_name",
-                    "a11vstd_rec_tea.deptcd AS stu_dept_id",
-                    "a11vstd_rec_tea.grade AS stu_grade",
-                    "a11vstd_rec_tea.class AS stu_class")
-                ->where("a11vstd_rec_tea.id", $comment_detail[0] -> sid)->get();
+//            $aca_user_detail = DB::connection('pgsql')
+//                ->table('a11vstd_rec_tea')
+//                ->select("a11vstd_rec_tea.id AS stu_id",
+//                    "a11vstd_rec_tea.name AS stu_name",
+//                    "a11vstd_rec_tea.deptcd AS stu_dept_id",
+//                    "a11vstd_rec_tea.grade AS stu_grade",
+//                    "a11vstd_rec_tea.class AS stu_class")
+//                ->where("a11vstd_rec_tea.id", $comment_detail[0] -> sid)->get();
+//
+//            if (isset($aca_user_detail[0]->stu_dept_id)) {
+//                $dept_alias = DB::connection('pgsql')
+//                    ->table('h0rtunit_a_')
+//                    ->select("name", "abbrev")
+//                    ->where("cd", $aca_user_detail[0]->stu_dept_id)->get();
+//            }
 
-            if (isset($aca_user_detail[0]->stu_dept_id)) {
-                $dept_alias = DB::connection('pgsql')
-                    ->table('h0rtunit_a_')
-                    ->select("name", "abbrev")
-                    ->where("cd", $aca_user_detail[0]->stu_dept_id)->get();
-            }
+            $aca_user_detail = null;
+            $dept_alias = null;
 
             $comment_attachments = FileAttachments::where('comments_id', $id)->get();
             $comment_user_detail = User::where('account', $comment_detail[0] -> sid)->get();
