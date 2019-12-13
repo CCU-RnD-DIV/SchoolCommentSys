@@ -43,10 +43,6 @@
                                 </section>
                                 {!! Form::close() !!}
                             @endif
-                            <figure>
-                                <img src="/assets/img/ssoLogin.svg" width="45%" alt="" />
-                                <figcaption></figcaption>
-                            </figure>
                         </column>
                     </row>
 

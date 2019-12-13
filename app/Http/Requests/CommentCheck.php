@@ -23,7 +23,7 @@ class CommentCheck extends Request
      */
     public function rules()
     {
-        $mime = 'mimes:jpeg,bmp,png,gif,doc,docx,xls,xlsx,ppt,pptx,pdf,zip,rar,7z,txt|max:7100';
+        $mime = 'max:7100';
         $rules = [
             'topic' => 'required|max:20',
             'email' => 'required|email',

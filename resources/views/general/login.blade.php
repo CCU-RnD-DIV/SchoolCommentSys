@@ -6,7 +6,7 @@
             <div>
 
                 <fieldset>
-                    <legend>Login data</legend>
+                    <legend>Login</legend>
                     <row cols="2">
                         <column cols="4">
 
@@ -30,6 +30,7 @@
                                 </section>
                                 <section>
                                     {!! Form::submit('登入', ['class' => 'btn', 'type' => 'primary']) !!}
+                                    <a class="btn btn-primary" href="/generalReg">註冊</a>
                                 </section>
                                 {!! Form::close() !!}
                             @endif

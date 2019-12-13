@@ -24,20 +24,11 @@
                     <section>
                         <ol>
                             <li>
-                                請針對本校政策興革提出建言，陳情、反應或諮詢事項亦可，與校務無關之謾罵、惡意攻訐、情緒批評等，將逕予刪除。
+                                請在反應主題上標明 問題 - 負責助教姓名
                             </li>
                             <p></p>
                             <li>
                                 請投書者自行至建言系統查詢案件處理狀況，本系統不主動將處理情形回覆至您的信箱。
-                            </li>
-                            <p></p>
-                            <li>
-                                本校管理者或業管單位可視案件需求，進一步透過電話聯繫或約請投書人面談、派員實地查證，以協助解決問題。
-                                特別提醒您，冒用他人信箱或手機投書者，將負法律責任。
-                            </li>
-                            <p></p>
-                            <li>
-                                當您填寫本表單時，即視同您已同意遵守本表單個人資料之蒐集、處理與利用。詳閱「<a href="dataUsageANC" target="_blank">國立中正大學校務建言表單個人資料蒐集告知聲明</a>」。
                             </li>
                         </ol>
                     </section>
@@ -163,7 +154,7 @@
                                 <span class="alert alert-error"><i class="fa fa-exclamation-triangle"></i> {!! $errors->first('resp-attachment5') !!}</span>
                             @endif
 
-                            <div class="desc">每份檔案容量需小於7MB，只接受 Word, Excel, PowerPoint, PDF, JPG, PNG, GIF, RAR, ZIP, 7z 等格式</div>
+                            <div class="desc">每份檔案容量需小於7MB</div>
                         </column>
                     </row>
                     <section id="submit">
